@@ -1,0 +1,70 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.experimental.parallaxstickylistview.app.ParallaxStickyHeaderCollectionFragment">
+
+    <FrameLayout
+        android:id="@+id/holycow"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:drawingCacheQuality="high">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/pattern"
+            android:scaleType="centerCrop"
+            android:layout_gravity="top" />
+
+    </FrameLayout>
+
+    <com.gokhanbarisaker.scrollplugins.views.ObservableScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="200dp">
+
+            <View
+                android:id="@+id/parallax_reference"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/header_dynamic"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="HEADER"
+                android:textSize="36sp"
+                android:gravity="center"
+                android:background="@android:color/holo_blue_bright"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ipsum"
+                android:textSize="18sp"
+                android:padding="8dp"
+                android:textColor="@android:color/primary_text_dark"
+                android:background="@android:color/holo_green_dark" />
+        </LinearLayout>
+
+    </com.gokhanbarisaker.scrollplugins.views.ObservableScrollView>
+
+    <TextView
+        android:id="@+id/header_sticky"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="HEADER"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@android:color/holo_blue_bright"/>
+
+</FrameLayout>
