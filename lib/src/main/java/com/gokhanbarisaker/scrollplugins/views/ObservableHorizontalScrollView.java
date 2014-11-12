@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ObservableHorizontalScrollView extends HorizontalScrollView
 {
-    private List<ScrollPlugin> scrollPluginList = new ArrayList<ScrollPlugin>();
+    final private List<ScrollPlugin> scrollPluginList = new ArrayList<ScrollPlugin>();
 
     public ObservableHorizontalScrollView(Context context) {
         super(context);

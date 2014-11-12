@@ -1,17 +1,35 @@
 package com.gokhanbarisaker.scrollpluginsapp;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.gokhanbarisaker.scrollpluginsapp.fragments.AbsListViewDemoFragment;
+import com.gokhanbarisaker.scrollpluginsapp.fragments.NavigationDrawerFragment;
+import com.gokhanbarisaker.scrollpluginsapp.fragments.ParallaxStickyHeaderCollectionFragment;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    private NavigationDrawerFragment navigationDrawerFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        navigationDrawerFragment = (NavigationDrawerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        //mTitle = getTitle();
+
+        // Set up the drawer.
+        navigationDrawerFragment.setUp(
+                R.id.navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
 
         if (savedInstanceState == null)
         {
@@ -43,5 +61,29 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onNavigationDrawerItemSelected(int position, String title) {
+        // update the main content by replacing fragments
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = null;
+
+        if (getString(R.string.demo_scrollview).equals(title))
+        {
+            fragment = ParallaxStickyHeaderCollectionFragment.newInstance();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        }
+        else if (getString(R.string.demo_abslist).equals(title))
+        {
+            fragment = AbsListViewDemoFragment.newInstance();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        }
     }
 }

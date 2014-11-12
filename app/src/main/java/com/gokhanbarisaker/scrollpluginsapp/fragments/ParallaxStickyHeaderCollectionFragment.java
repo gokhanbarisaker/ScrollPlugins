@@ -1,4 +1,4 @@
-package com.gokhanbarisaker.scrollpluginsapp;
+package com.gokhanbarisaker.scrollpluginsapp.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -13,14 +13,15 @@ import android.widget.ImageView;
 import com.gokhanbarisaker.scrollplugins.models.ParallaxScrollPlugin;
 import com.gokhanbarisaker.scrollplugins.models.ScrollPlugin;
 import com.gokhanbarisaker.scrollplugins.views.ObservableScrollView;
+import com.gokhanbarisaker.scrollpluginsapp.R;
 
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link com.gokhanbarisaker.scrollpluginsapp.ParallaxStickyHeaderCollectionFragment.OnFragmentInteractionListener} interface
+ * {@link ParallaxStickyHeaderCollectionFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link com.gokhanbarisaker.scrollpluginsapp.ParallaxStickyHeaderCollectionFragment#newInstance} factory method to
+ * Use the {@link ParallaxStickyHeaderCollectionFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */

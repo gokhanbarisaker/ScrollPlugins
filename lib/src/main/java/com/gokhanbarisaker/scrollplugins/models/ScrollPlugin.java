@@ -5,5 +5,5 @@ package com.gokhanbarisaker.scrollplugins.models;
  */
 public interface ScrollPlugin
 {
-    public void onScroll(final int scrollY, final int visibleHeight, final int scrollableHeight);
+    public void onScroll(final int scrolledPixels, final int visiblePixels, final int scrollablePixels);
 }

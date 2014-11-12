@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ObservableScrollView extends ScrollView
 {
-    private List<ScrollPlugin> scrollPluginList = new ArrayList<ScrollPlugin>();
+    final private List<ScrollPlugin> scrollPluginList = new ArrayList<ScrollPlugin>();
 
     public ObservableScrollView(Context context) {
         super(context);
