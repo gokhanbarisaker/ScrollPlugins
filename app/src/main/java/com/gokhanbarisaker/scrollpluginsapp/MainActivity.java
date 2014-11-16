@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.gokhanbarisaker.scrollpluginsapp.fragments.AbsListViewDemoFragment;
 import com.gokhanbarisaker.scrollpluginsapp.fragments.NavigationDrawerFragment;
-import com.gokhanbarisaker.scrollpluginsapp.fragments.ParallaxStickyHeaderCollectionFragment;
+import com.gokhanbarisaker.scrollpluginsapp.fragments.ScrollViewDemoFragment;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragment_container, ParallaxStickyHeaderCollectionFragment.newInstance(), "ğ")
+                    .add(R.id.fragment_container, ScrollViewDemoFragment.newInstance(), "ğ")
                     .commit();
         }
     }
@@ -71,7 +71,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
         if (getString(R.string.demo_scrollview).equals(title))
         {
-            fragment = ParallaxStickyHeaderCollectionFragment.newInstance();
+            fragment = ScrollViewDemoFragment.newInstance();
 
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, fragment)

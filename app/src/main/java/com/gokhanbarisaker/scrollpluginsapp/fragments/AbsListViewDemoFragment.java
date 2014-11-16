@@ -11,7 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.gokhanbarisaker.scrollplugins.listeners.OnAbsListViewScrollListener;
+import com.gokhanbarisaker.scrollplugins.listeners.abslistview.OnScrollListener;
 import com.gokhanbarisaker.scrollpluginsapp.R;
 import com.gokhanbarisaker.scrollpluginsapp.adapters.AbsListViewDemoAdapter;
 
@@ -65,7 +65,7 @@ public class AbsListViewDemoFragment extends Fragment {
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
-        mListView.setOnScrollListener(new OnAbsListViewScrollListener());
+        mListView.setOnScrollListener(new OnScrollListener());
 
         return view;
     }

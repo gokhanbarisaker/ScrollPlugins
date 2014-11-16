@@ -1,20 +1,14 @@
-package com.gokhanbarisaker.scrollplugins.listeners;
+package com.gokhanbarisaker.scrollplugins.listeners.abslistview;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 
 import com.gokhanbarisaker.scrollplugins.models.Parallaxable;
-import com.gokhanbarisaker.scrollplugins.models.ScrollPlugin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by gokhanbarisaker on 11/11/14.
  */
-public class OnAbsListViewScrollListener implements OnScrollListener
+public class OnScrollListener implements AbsListView.OnScrollListener
 {
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {}
@@ -22,8 +16,6 @@ public class OnAbsListViewScrollListener implements OnScrollListener
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
     {
-        //if (lastScrolledTopItem == firstVisibleItem && lastParallaxPercentage == )
-
         final int listHeight = view.getHeight();
 
         View itemView = null;

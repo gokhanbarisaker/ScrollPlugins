@@ -1,10 +1,16 @@
 package com.gokhanbarisaker.scrollpluginsapp.fragments;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.RenderScript;
+import android.support.v8.renderscript.ScriptIntrinsicBlur;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +25,13 @@ import com.gokhanbarisaker.scrollpluginsapp.R;
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ParallaxStickyHeaderCollectionFragment.OnFragmentInteractionListener} interface
+ * {@link ScrollViewDemoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ParallaxStickyHeaderCollectionFragment#newInstance} factory method to
+ * Use the {@link ScrollViewDemoFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class ParallaxStickyHeaderCollectionFragment extends Fragment
+public class ScrollViewDemoFragment extends Fragment
 {
     private OnFragmentInteractionListener mListener;
 
@@ -36,12 +42,12 @@ public class ParallaxStickyHeaderCollectionFragment extends Fragment
      * @return A new instance of fragment ParallaxStickyHeaderCollectionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ParallaxStickyHeaderCollectionFragment newInstance() {
-        ParallaxStickyHeaderCollectionFragment fragment = new ParallaxStickyHeaderCollectionFragment();
+    public static ScrollViewDemoFragment newInstance() {
+        ScrollViewDemoFragment fragment = new ScrollViewDemoFragment();
         return fragment;
     }
 
-    public ParallaxStickyHeaderCollectionFragment() {
+    public ScrollViewDemoFragment() {
         // Required empty public constructor
     }
 
@@ -64,7 +70,6 @@ public class ParallaxStickyHeaderCollectionFragment extends Fragment
             final View holyView = rootView.findViewById(R.id.holycow);
             //holyView.setDrawingCacheEnabled(true);
 
-
             final RenderScript renderScript = RenderScript.create(getActivity());
 
             scrollView.addScrollPlugin(new ParallaxScrollPlugin(parallaxableView) {
@@ -83,30 +88,27 @@ public class ParallaxStickyHeaderCollectionFragment extends Fragment
                         holyView.setPadding(0, asdf, 0, (int) (-asdf * .5f));
                     }
 
-//                    boolean shouldBlur = ((((int) (verticalPercentage * 40)) % 2) == 0) && (lastObservedVerticalPercentage != verticalPercentage);
-//
-//                    if (verticalPercentage >= 0.f && verticalPercentage <= 1.f && shouldBlur)
-//                    {
-//
-//                        Bitmap bitmap = holyView.getDrawingCache();
-//
-//                        // 0 < x <= 25
-//                        float blurRadius = (24.99f * verticalPercentage) + .01f;
-//
-////                        final BitmapFactory.Options options = new BitmapFactory.Options();
-////                        options.inSampleSize = calculateSampleSize(verticalPercentage);
-////                        final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pattern, options);
-//
-//                        final Allocation input = Allocation.createFromBitmap(renderScript, bitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
-//                        final Allocation output = Allocation.createTyped(renderScript, input.getType());
-//                        final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(renderScript, android.support.v8.renderscript.Element.U8_4(renderScript));
-//                        script.setRadius(blurRadius);
-//                        script.setInput(input);
-//                        script.forEach(output);
-//                        output.copyTo(bitmap);
-//
-//                        imageView.setImageBitmap(bitmap);
-//                    }
+                    boolean shouldBlur = ((((int) (verticalPercentage * 40)) % 2) == 0) && (lastObservedVerticalPercentage != verticalPercentage);
+
+                    if (verticalPercentage >= 0.f && verticalPercentage <= 1.f && shouldBlur)
+                    {
+                        // 0 < x <= 25
+                        float blurRadius = (24.99f * verticalPercentage) + .01f;
+
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = calculateSampleSize(verticalPercentage);
+                        final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pattern, options);
+
+                        final Allocation input = Allocation.createFromBitmap(renderScript, bitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
+                        final Allocation output = Allocation.createTyped(renderScript, input.getType());
+                        final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(renderScript, android.support.v8.renderscript.Element.U8_4(renderScript));
+                        script.setRadius(blurRadius);
+                        script.setInput(input);
+                        script.forEach(output);
+                        output.copyTo(bitmap);
+
+                        imageView.setImageBitmap(bitmap);
+                    }
 
                     lastObservedVerticalPercentage = verticalPercentage;
                 }

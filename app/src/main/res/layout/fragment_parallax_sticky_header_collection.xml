@@ -16,7 +16,8 @@
             android:layout_height="match_parent"
             android:src="@drawable/pattern"
             android:scaleType="centerCrop"
-            android:layout_gravity="top" />
+            android:layout_gravity="top"
+            android:drawingCacheQuality="high" />
 
     </FrameLayout>
 
