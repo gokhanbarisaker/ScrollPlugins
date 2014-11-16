@@ -28,3 +28,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:recyclerview-v7:21.0.0'
 }
+
+apply from: 'aar.gradle'
